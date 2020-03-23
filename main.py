@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
 from time import sleep
 import math
@@ -27,6 +27,16 @@ def main():
     for i in range(len(password_list)):
         print('Password:', password_list[i])
     print('------------------------------')
+    if pass_amount == 1:
+        try:
+            import pyperclip
+            pyperclip.copy(password)
+            print("Success. Password available in clipboard.")
+        except ModuleNotFoundError as a:
+            print("Can't copy password to clipboard. Missing modules.")
+            module = str(a).split()[3]
+            print("Missing module:", module)
+            print("Use: 'pip install " + module)
 
 
 def welcome_screen():
